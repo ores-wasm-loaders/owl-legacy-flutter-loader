@@ -1,0 +1,38 @@
+[package]
+org = "ores-wasm-loaders"
+name = "owl-flutter-loader"
+version = "0.1.0"
+kind = "pub-lib-core"
+language = "typescript"
+description = "ORES Wasm Loaders: the shared Flutter-web adapter"
+license = "MIT"
+
+[package.repository]
+vcs = "git"
+url = "https://github.com/ores-wasm-loaders/owl-flutter-loader"
+
+[dependencies]
+"ores-wasm-loaders/owl-interfaces" = "^0.1.0"
+"ores-wasm-loaders/owl-coordinator" = "^0.1.0"
+
+[build]
+command = "node --test test/*.test.mjs"
+
+[publish]
+include_readme = true
+tag_format = "v{version}"
+exclude = [".env", ".env.*", ".vendor/**", ".zed/**", ".zed-pack/**", "tmp/**", "**/*.log", ".DS_Store", "**/target/**", "**/node_modules/**", "**/dist/**"]
+
+[install]
+dir = ".vendor/.zed"
+
+[targets.repository]
+dir = "."
+
+[targets.typescript]
+dir = "."
+name = "owl-flutter-loader"
+adapter = "node"
+
+[scripts]
+test = "node --test test/*.test.mjs"
